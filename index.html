@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed-First Web Optimization | Portfolio</title>
+    <meta name="description" content="Professional Web Speed Optimization Services. 100/100 Lighthouse Scores Guaranteed.">
+    
+    <style>
+        :root { --primary: #00ff88; --dark: #0f172a; --light: #f8fafc; --text-gray: #94a3b8; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+               background: var(--dark); color: white; line-height: 1.6; overflow-x: hidden; }
+        
+        /* Fast Header */
+        header { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(15, 23, 42, 0.9); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #1e293b; }
+        .logo { font-weight: 800; font-size: 1.25rem; color: var(--primary); text-decoration: none; letter-spacing: -1px; }
+
+        /* Hero Section */
+        .hero { padding: 5rem 5%; text-align: center; max-width: 900px; margin: 0 auto; }
+        .badge { background: rgba(0, 255, 136, 0.1); color: var(--primary); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+        h1 { font-size: clamp(2rem, 8vw, 3.5rem); margin: 1.5rem 0; line-height: 1.1; letter-spacing: -2px; }
+        p { color: var(--text-gray); font-size: 1.1rem; margin-bottom: 2rem; }
+
+        /* The "Proof" Section */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 3rem 0; }
+        .stat-card { background: #1e293b; padding: 2rem; border-radius: 12px; border: 1px solid #334155; }
+        .stat-number { display: block; font-size: 2.5rem; font-weight: 800; color: var(--primary); }
+        .stat-label { color: var(--text-gray); font-size: 0.9rem; }
+
+        /* Microservices List */
+        .services { padding: 4rem 5%; background: var(--light); color: var(--dark); }
+        .service-card { background: white; padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .service-card h3 { color: var(--dark); margin-bottom: 0.5rem; }
+
+        /* Action Button */
+        .btn { background: var(--primary); color: var(--dark); padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; transition: transform 0.2s; }
+        .btn:hover { transform: scale(1.05); }
+
+        footer { text-align: center; padding: 3rem; color: var(--text-gray); font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo">SPEED_LAB</a>
+    <a href="#contact" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Hire Me</a>
+</header>
+
+<section class="hero">
+    <span class="badge">2026 Optimization Standard</span>
+    <h1>I make your website load in under 1 second.</h1>
+    <p>Slow sites kill business. I specialize in Core Web Vitals, image compression, and code minification for GitHub and Blogspot users.</p>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span class="stat-number">100/100</span>
+            <span class="stat-label">Lighthouse Score</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">-75%</span>
+            <span class="stat-label">Bounce Rate Reduction</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">< 500ms</span>
+            <span class="stat-label">Average Load Time</span>
+        </div>
+    </div>
+</section>
+
+<section class="services" id="contact">
+    <h2 style="text-align:center; margin-bottom: 2rem;">My Micro-Services</h2>
+    
+    <div class="service-card">
+        <h3>🚀 The Blitz Audit</h3>
+        <p>I will analyze your current site and provide a 10-point speed fix plan. <br><strong>Price: $25</strong></p>
+    </div>
+
+    <div class="service-card">
+        <h3>🖼️ Image & Asset Purge</h3>
+        <p>I convert your site to WebP/AVIF and implement lazy loading to slash load times. <br><strong>Price: $75</strong></p>
+    </div>
+
+    <div class="service-card">
+        <h3>🛠️ Full GitHub Migration</h3>
+        <p>I will move your slow Blogspot/WordPress site to a lightning-fast GitHub Pages static site. <br><strong>Price: $250</strong></p>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+        <p style="color: var(--dark); margin-bottom: 1rem;">Ready to speed up?</p>
+        <a href="mailto:nathanielimrn@gmail.com" class="btn">Email Me For a Free Speed Test</a>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Speed_Lab. Hosted on GitHub Pages for maximum performance.</p>
+</footer>
+
+</body>
+</html>
