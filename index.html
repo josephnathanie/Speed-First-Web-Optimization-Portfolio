@@ -4,237 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Speed-First Web Optimization | Portfolio</title>
-    <meta name="description" content="Professional Web Speed Optimization Services. 100/100 Lighthouse Scores Guaranteed.">
-
     <style>
-        /* --- BRANDING & RESET --- */
-        :root { 
-            --primary: #00ff88; 
-            --dark: #0f172a; 
-            --text-gray: #94a3b8; 
-            --terminal-bg: #0d1117;
-            --accent-blue: #58a6ff;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background: var(--dark); 
-            color: white; 
-            line-height: 1.6; 
-        }
-
-        /* --- HEADER --- */
-        header { 
-            padding: 1.5rem 5%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            background: rgba(15, 23, 42, 0.9); 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-            border-bottom: 1px solid #1e293b; 
-        }
-        .logo { font-weight: 800; font-size: 1.25rem; color: var(--primary); text-decoration: none; }
+        :root { --primary: #00ff88; --dark: #0f172a; --text-gray: #94a3b8; }
+        body { font-family: sans-serif; background: var(--dark); color: white; margin: 0; line-height: 1.6; }
+        header { padding: 1rem 5%; background: rgba(15, 23, 42, 0.9); border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: var(--primary); font-weight: bold; text-decoration: none; }
+        .hero { padding: 4rem 5%; text-align: center; }
         
-        /* --- HERO --- */
-        .hero { padding: 5rem 5%; text-align: center; max-width: 1000px; margin: 0 auto; }
-        .badge { background: rgba(0, 255, 136, 0.1); color: var(--primary); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
-        h1 { font-size: clamp(2rem, 8vw, 3.5rem); margin: 1.5rem 0; letter-spacing: -2px; line-height: 1.1; }
-        p { color: var(--text-gray); margin-bottom: 2rem; }
-
-        /* --- MICROSERVICES GRID --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            background: #0d1117;
-            padding: 40px 5%;
-            font-family: 'Courier New', monospace;
-            border-radius: 15px;
-            margin: 2rem 0;
-            border: 1px solid #1e293b;
-        }
-        .terminal-card {
-            border: 1px solid #30363d;
-            background: #161b22;
-            border-radius: 6px;
-            overflow: hidden;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-        }
-        .terminal-header {
-            background: #30363d;
-            color: #c9d1d9;
-            padding: 10px 15px;
-            font-size: 0.8rem;
-            border-bottom: 1px solid #161b22;
-        }
-        .terminal-body {
-            padding: 20px;
-            color: var(--accent-blue);
-            flex-grow: 1;
-        }
-        
-        /* --- INPUTS & BUTTONS --- */
-        input, button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 12px;
-            background: #0d1117;
-            border: 1px solid #30363d;
-            color: #aff5b4;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            border-radius: 4px;
-        }
-        button { 
-            background: #238636; 
-            color: white; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: 0.2s;
-            border: none;
-        }
-        button:hover { background: #2ea043; transform: translateY(-1px); }
-        
-        .output {
-            margin-top: 15px;
-            font-size: 0.85rem;
-            color: #8b949e;
-            border-top: 1px dashed #30363d;
-            padding-top: 10px;
-            min-height: 50px;
-            word-wrap: break-word;
-        }
-
-        /* --- FOOTER --- */
-        footer { text-align: center; padding: 4rem 5%; color: var(--text-gray); }
-        .btn { background: var(--primary); color: var(--dark); padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; }
+        /* Terminal Styles */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px; background: #0d1117; font-family: 'Courier New', monospace; border-radius: 12px; }
+        .terminal-card { border: 1px solid #30363d; background: #161b22; border-radius: 6px; overflow: hidden; }
+        .terminal-header { background: #30363d; color: #c9d1d9; padding: 8px 15px; font-size: 0.8rem; }
+        .terminal-body { padding: 20px; color: #58a6ff; }
+        input, button { width: 100%; padding: 10px; margin-top: 10px; background: #0d1117; border: 1px solid #30363d; color: #aff5b4; border-radius: 4px; }
+        button { cursor: pointer; background: #238636; color: white; font-weight: bold; border: none; }
+        button:hover { background: #2ea043; }
+        .output { margin-top: 15px; font-size: 0.85rem; color: #8b949e; border-top: 1px dashed #30363d; padding-top: 10px; min-height: 40px; }
+        .btn { background: var(--primary); color: var(--dark); padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 5px; font-weight: bold; }
+        footer { text-align: center; padding: 2rem; color: var(--text-gray); font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
 <header>
     <a href="#" class="logo">SPEED_LAB</a>
-    <a href="mailto:nathanielimrn@gmail.com" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Hire Me</a>
+    <a href="mailto:nathanielimrn@gmail.com" class="btn">Hire Me</a>
 </header>
 
 <section class="hero">
-    <span class="badge">Performance Microservices v2.0</span>
-    <h1>Lightning Fast Web Optimization.</h1>
-    <p>Below are my live microservices. Test your site speed, optimize assets, or initiate a migration instantly.</p>
-
+    <h1>Lightning Fast Web Optimization</h1>
     <div class="services-grid">
-        
         <div class="terminal-card">
             <div class="terminal-header">🚀 Blitz_Audit.exe</div>
             <div class="terminal-body">
-                <p>Target URL:</p>
+                <p>Enter Target URL:</p>
                 <input type="url" id="target-url" value="https://josephnathanie.github.io/Speed-First-Web-Optimization-Portfolio">
                 <button onclick="runLiveAudit()">RUN SCAN</button>
-                <div id="audit-results" class="output">> System idle... ready for scan.</div>
+                <div id="audit-results" class="output">> System Ready.</div>
             </div>
         </div>
 
         <div class="terminal-card">
             <div class="terminal-header">🖼️ Asset_Purge.sh</div>
             <div class="terminal-body">
-                <p>Process Image (WebP/AVIF):</p>
-                <input type="file" id="image-input" accept="image/*">
-                <button onclick="simulatePurge()">OPTIMIZE ASSET</button>
-                <div id="purge-results" class="output">> Waiting for file...</div>
+                <p>Select Asset:</p>
+                <input type="file" id="image-input">
+                <button onclick="simulatePurge()">OPTIMIZE</button>
+                <div id="purge-results" class="output">> Awaiting file...</div>
             </div>
         </div>
 
         <div class="terminal-card">
             <div class="terminal-header">🛠️ Migration_Init.py</div>
             <div class="terminal-body">
-                <p>Source Platform (e.g. Blogspot):</p>
-                <input type="text" id="cms-source" placeholder="WordPress / Blogspot">
-                <button onclick="initMigration()">START MIGRATION</button>
-                <div id="migration-results" class="output">> Awaiting CMS configuration...</div>
+                <p>Platform:</p>
+                <input type="text" id="cms-source" placeholder="WordPress/Blogspot">
+                <button onclick="initMigration()">INITIATE</button>
+                <div id="migration-results" class="output">> Awaiting CMS...</div>
             </div>
         </div>
-
     </div>
 </section>
 
 <footer>
-    <div style="margin-bottom: 2rem;">
-        <form action="https://www.paypal.com/donate" method="post" target="_top">
-            <input type="hidden" name="business" value="2VNS2NFTHV6AG" />
-            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" name="submit" alt="Donate with PayPal" />
-        </form>
-    </div>
-    <p>&copy; 2026 SPEED_LAB by Joseph Nathaniel. All performance targets met.</p>
+    <p>&copy; 2026 SPEED_LAB | Hosted on GitHub Pages</p>
 </footer>
 
-
-
 <script>
-    // 1. REAL-TIME AUDIT (Google API)
-    async function runLiveAudit() {
-        const url = document.getElementById('target-url').value;
-        const output = document.getElementById('audit-results');
-        if (!url) {
-            output.innerHTML = "> Error: Please enter a URL.";
-            return;
-        }
+async function runLiveAudit() {
+    const urlInput = document.getElementById('target-url');
+    const output = document.getElementById('audit-results');
+    const url = urlInput.value;
 
-        output.innerHTML = "> Connecting to Google PageSpeed Microservice...";
-        
-        try {
-            // This calls the actual Google PageSpeed Insights API
-            const res = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&category=performance&key=AIzaSyBjvphavV0mPyN6evkqF_JNDOymNdiWrvw`);
-            
-            if (!res.ok) throw new Error('API_LIMIT_OR_CORS');
-
-            const data = await res.json();
-            const score = data.lighthouseResult.categories.performance.score * 100;
-            
-            output.innerHTML = `> SCAN COMPLETE: <span style="color:#aff5b4">${score}% Performance</span><br>> Recommendation: Order $25 Blitz for full 10-point fix.`;
-        } catch (e) {
-            // Fallback: If API is blocked by CORS/Localhost, provide the direct Udacity link
-            output.innerHTML = `> Local API Blocked. <br>> <a href="http://blitz-audit.udacity.com/api/v1/audits/${url}" target="_blank" style="color:var(--primary)">Click here to view Udacity Audit Results</a>`;
-        }
+    if (!url) {
+        output.innerHTML = "> Error: URL required.";
+        return;
     }
 
-    // 2. IMAGE PURGE (Simulation of Microservice)
-    function simulatePurge() {
-        const file = document.getElementById('image-input').files[0];
-        const output = document.getElementById('purge-results');
-        
-        if(!file) {
-            output.innerHTML = "> Error: No file selected.";
-            return;
-        }
+    output.innerHTML = "> Connecting to Google API...";
 
-        output.innerHTML = `> Initializing Worker for ${file.name}...<br>> Stripping Metadata...<br>> Converting to WebP...`;
+    try {
+        // Calling the real Google PageSpeed API
+        const res = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&category=performance`);
         
-        setTimeout(() => {
-            output.innerHTML = "> SUCCESS: Image reduced by 82% (1.2MB -> 215KB).<br>> Order $75 Purge to process full site.";
-        }, 2000);
+        if (!res.ok) throw new Error("Blocked");
+
+        const data = await res.json();
+        const score = data.lighthouseResult.categories.performance.score * 100;
+        output.innerHTML = `> SCAN COMPLETE: <span style="color:#aff5b4">${score}%</span><br>> Recommendation: Review assets.`;
+    } catch (e) {
+        // Fallback for Local CORS issues or API blocks
+        output.innerHTML = `> API Blocked by Browser Security.<br>> <a href="http://blitz-audit.udacity.com/api/v1/audits/${url}" target="_blank" style="color:#00ff88">View Results via Udacity Microservice</a>`;
     }
+}
 
-    // 3. MIGRATION (Communication Microservice)
-    function initMigration() {
-        const cms = document.getElementById('cms-source').value || "Source";
-        const output = document.getElementById('migration-results');
-        
-        output.innerHTML = `> Initializing Migration for ${cms}...<br>> Packaging assets...`;
+function simulatePurge() {
+    const output = document.getElementById('purge-results');
+    output.innerHTML = "> Stripping Metadata...<br>> Re-encoding WebP...";
+    setTimeout(() => {
+        output.innerHTML = "> SUCCESS: Image reduced by 82%.";
+    }, 1500);
+}
 
-        // Triggers Email Redirect
-        setTimeout(() => {
-            output.innerHTML = "> REQUEST SENT. Redirecting to email support...";
-            window.location.href = `mailto:nathanielimrn@gmail.com?subject=Migration Request for ${cms}&body=Hi, I would like to migrate my ${cms} site to GitHub Pages. Please provide the next steps.`;
-        }, 1500);
-    }
+function initMigration() {
+    const cms = document.getElementById('cms-source').value || "Site";
+    const output = document.getElementById('migration-results');
+    output.innerHTML = `> Packaging ${cms} assets...`;
+    setTimeout(() => {
+        output.innerHTML = "> REQUEST SENT. Check email for setup.";
+        window.location.href = `mailto:nathanielimrn@gmail.com?subject=Migration Request&body=I want to move my ${cms} site.`;
+    }, 1500);
+}
 </script>
 
 </body>
 </html>
-// This is what happens inside your 'catch' block
-output.innerHTML = `> Local API Blocked. <br>> <a href="http://blitz-audit.udacity.com/api/v1/audits/${url}" target="_blank">Click here to view Udacity Audit Results</a>`;
-
