@@ -83,6 +83,40 @@
     <div class="service-card">
         <h3>🚀 The Blitz Audit</h3>
         <p>I will analyze your current site and provide a 10-point speed fix plan. <br><strong>Price: $25</strong></p>
+         <section class="services-grid">
+ <div class="terminal-card" id="audit-box">
+  <div class="terminal-header">🚀 Blitz_Audit.exe</div>
+  <div class="terminal-body">
+    <p>Enter URL for 10-point analysis:</p>
+    <input type="url" id="audit-url" value="https://josephnathanie.github.io/Speed-First-Web-Optimization-Portfolio">
+    
+    <button onclick="window.open('http://blitz-audit.udacity.com/api/v1/audits/' + document.getElementById('audit-url').value)">RUN SCAN</button>
+    
+    <div id="audit-results" class="output"></div>
+  </div>
+</div>
+  </div>
+
+  <div class="terminal-card" id="purge-box">
+    <div class="terminal-header">🖼️ Asset_Purge.sh</div>
+    <div class="terminal-body">
+      <p>Upload image to convert to WebP/AVIF:</p>
+      <input type="file" id="image-input" accept="image/*">
+      <button onclick="simulatePurge()">OPTIMIZE</button>
+      <div id="purge-results" class="output"></div>
+    </div>
+  </div>
+
+  <div class="terminal-card" id="migration-box">
+    <div class="terminal-header">🛠️ Migration_Init.py</div>
+    <div class="terminal-body">
+      <p>Source CMS (WordPress/Blogspot):</p>
+      <input type="text" id="cms-source" placeholder="WordPress">
+      <button onclick="initMigration()">START MIGRATION</button>
+      <div id="migration-results" class="output"></div>
+    </div>
+  </div>
+</section>
     </div>
 
     <div class="service-card">
@@ -110,5 +144,6 @@
 </body>
 
 </html>
+
 
 
