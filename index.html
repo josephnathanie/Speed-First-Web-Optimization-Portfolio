@@ -7,18 +7,23 @@
     <style>
         :root { --primary: #00ff88; --dark: #0f172a; --text-gray: #94a3b8; }
         body { font-family: sans-serif; background: var(--dark); color: white; margin: 0; line-height: 1.6; }
+        
+        /* Layout Styles */
         header { padding: 1rem 5%; background: rgba(15, 23, 42, 0.9); border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; }
         .logo { color: var(--primary); font-weight: bold; text-decoration: none; }
         .hero { padding: 4rem 5%; text-align: center; }
         
-        /* Terminal Styles */
+        /* Terminal Grid Styling */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px; background: #0d1117; font-family: 'Courier New', monospace; border-radius: 12px; }
         .terminal-card { border: 1px solid #30363d; background: #161b22; border-radius: 6px; overflow: hidden; }
         .terminal-header { background: #30363d; color: #c9d1d9; padding: 8px 15px; font-size: 0.8rem; }
         .terminal-body { padding: 20px; color: #58a6ff; }
+        
+        /* Input & Button Styling */
         input, button { width: 100%; padding: 10px; margin-top: 10px; background: #0d1117; border: 1px solid #30363d; color: #aff5b4; border-radius: 4px; }
         button { cursor: pointer; background: #238636; color: white; font-weight: bold; border: none; }
         button:hover { background: #2ea043; }
+        
         .output { margin-top: 15px; font-size: 0.85rem; color: #8b949e; border-top: 1px dashed #30363d; padding-top: 10px; min-height: 40px; }
         .btn { background: var(--primary); color: var(--dark); padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 5px; font-weight: bold; }
         footer { text-align: center; padding: 2rem; color: var(--text-gray); font-size: 0.8rem; }
@@ -33,11 +38,13 @@
 
 <section class="hero">
     <h1>Lightning Fast Web Optimization</h1>
+    <p>Test your site speed using my live microservices.</p>
+    
     <div class="services-grid">
         <div class="terminal-card">
             <div class="terminal-header">🚀 Blitz_Audit.exe</div>
             <div class="terminal-body">
-                <p>Enter Target URL:</p>
+                <p>Target URL:</p>
                 <input type="url" id="target-url" value="https://josephnathanie.github.io/Speed-First-Web-Optimization-Portfolio">
                 <button onclick="runLiveAudit()">RUN SCAN</button>
                 <div id="audit-results" class="output">> System Ready.</div>
@@ -67,10 +74,22 @@
 </section>
 
 <footer>
+    <div style="margin-bottom: 2rem;">
+        <form action="https://www.paypal.com/donate" method="post" target="_top">
+            <input type="hidden" name="business" value="2VNS2NFTHV6AG" />
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" name="submit" alt="Donate with PayPal" />
+        </form>
+    </div>
     <p>&copy; 2026 SPEED_LAB | Hosted on GitHub Pages</p>
 </footer>
 
+
+
 <script>
+// --- GLOBAL CONFIG ---
+const GOOGLE_API_KEY = "AIzaSyBZnlqFEFSmraLzDD8y_hOSOhmHpLSPElQ";
+
+// --- 1. THE BLITZ AUDIT (Live API) ---
 async function runLiveAudit() {
     const urlInput = document.getElementById('target-url');
     const output = document.getElementById('audit-results');
@@ -81,23 +100,27 @@ async function runLiveAudit() {
         return;
     }
 
-    output.innerHTML = "> Connecting to Google API...";
+    output.innerHTML = "> Connecting to Google PageSpeed API...";
 
     try {
-        // Calling the real Google PageSpeed API
-        const res = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&category=performance`);
+        // Fetching data using your provided API Key
+        const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&category=performance&key=${GOOGLE_API_KEY}`;
+        const res = await fetch(apiEndpoint);
         
-        if (!res.ok) throw new Error("Blocked");
+        if (!res.ok) throw new Error("API_LIMIT_OR_CORS");
 
         const data = await res.json();
         const score = data.lighthouseResult.categories.performance.score * 100;
-        output.innerHTML = `> SCAN COMPLETE: <span style="color:#aff5b4">${score}%</span><br>> Recommendation: Review assets.`;
+        
+        output.innerHTML = `> SCAN COMPLETE: <span style="color:#00ff88">${score}% Performance</span><br>> Recommendation: Review critical rendering path.`;
     } catch (e) {
-        // Fallback for Local CORS issues or API blocks
-        output.innerHTML = `> API Blocked by Browser Security.<br>> <a href="http://blitz-audit.udacity.com/api/v1/audits/${url}" target="_blank" style="color:#00ff88">View Results via Udacity Microservice</a>`;
+        // Fallback for Localhost/CORS or API errors
+        output.innerHTML = `> API Request Restricted. <br>> <a href="http://blitz-audit.udacity.com/api/v1/audits/${url}" target="_blank" style="color:#00ff88">Try Manual Audit Link</a>`;
+        console.error("Audit Error:", e);
     }
 }
 
+// --- 2. ASSET PURGE (Simulation) ---
 function simulatePurge() {
     const output = document.getElementById('purge-results');
     output.innerHTML = "> Stripping Metadata...<br>> Re-encoding WebP...";
@@ -106,13 +129,14 @@ function simulatePurge() {
     }, 1500);
 }
 
+// --- 3. MIGRATION (Communication) ---
 function initMigration() {
     const cms = document.getElementById('cms-source').value || "Site";
     const output = document.getElementById('migration-results');
     output.innerHTML = `> Packaging ${cms} assets...`;
     setTimeout(() => {
-        output.innerHTML = "> REQUEST SENT. Check email for setup.";
-        window.location.href = `mailto:nathanielimrn@gmail.com?subject=Migration Request&body=I want to move my ${cms} site.`;
+        output.innerHTML = "> REQUEST SENT. Redirecting to email support...";
+        window.location.href = `mailto:nathanielimrn@gmail.com?subject=Migration Request&body=I want to move my ${cms} site to GitHub.`;
     }, 1500);
 }
 </script>
