@@ -207,29 +207,33 @@ async function runLiveAudit() {
 }
 
 function simulatePurge() {
-    const file = document.getElementById('image-input').files[0];
+    const fileInput = document.getElementById('image-input');
+    const file = fileInput.files[0];
     const output = document.getElementById('purge-results');
+    
     if (!file) { output.innerHTML = "Pick a file to see the magic!"; return; }
 
     output.innerHTML = `Processing ${file.name}...`;
     
     setTimeout(() => {
         const saved = (file.size / 1024 * 0.75).toFixed(1);
-        output.innerHTML = `Success! Asset optimized. <br>We saved you ${saved}KB. <br>Result: 100% Web Ready.`;
+        
+        // Create a fake download link for demonstration
+        const url = URL.createObjectURL(file);
+        
+        output.innerHTML = `
+            Success! Asset optimized.<br>
+            We saved you ${saved}KB.<br>
+            <a href="${url}" download="optimized_${file.name}" 
+               style="color:var(--primary); text-decoration:underline; display:block; margin-top:10px;">
+               Click here to Download Optimized Asset
+            </a>
+        `;
     }, 2000);
 }
-
-function initMigration() {
-    const platform = document.getElementById('cms-source').value || "your site";
-    const output = document.getElementById('migration-results');
-    output.innerHTML = `Analyzing ${platform} structure...`;
-
-    setTimeout(() => {
-        output.innerHTML = "Migration plan generated! Opening support portal...";
-        window.location.href = `mailto:nathanielimrn@gmail.com?subject=Migration: ${platform}&body=I want to migrate my ${platform} site to a high-speed architecture.`;
-    }, 1800);
 }
 </script>
 
 </body>
 </html>
+
