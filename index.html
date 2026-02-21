@@ -184,7 +184,7 @@ async function runLiveAudit() {
         output.innerHTML = `> SCAN_COMPLETE<br>> SCORE: <span style="color:#00ff88; font-weight:bold;">${score}%</span>`;
    } catch (err) {
     // This creates a dynamic link to the official Google report
-    const backupLink = `https://pagespeed.web.dev/analysis?url=${encodeURIComponent(url)}`;
+    const backupLink = `https://pagespeed.web.dev/analysis?url=[YOUR_URL])`;
     output.innerHTML = `> API_LOCKED (Check Restrictions). <br> 
     <a href="${backupLink}" target="_blank" style="color:#00ff88; font-weight:bold;">
     [CLICK TO VIEW OFFICIAL GOOGLE REPORT]
@@ -216,4 +216,5 @@ function initMigration() {
 </script>
 
 </body>
+
 </html>
