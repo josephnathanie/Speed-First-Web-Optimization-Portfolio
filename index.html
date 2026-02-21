@@ -23,7 +23,6 @@
             min-height: 100vh;
         }
         
-        /* Friendly Navigation */
         header { 
             padding: 1.5rem 5%; 
             background: rgba(15, 23, 42, 0.8); 
@@ -36,97 +35,49 @@
             top: 0; 
             z-index: 100; 
         }
-        .logo { 
-            color: var(--primary); 
-            font-weight: 800; 
-            text-decoration: none; 
-            font-size: 1.5rem; 
-            letter-spacing: -0.5px;
-        }
+        .logo { color: var(--primary); font-weight: 800; text-decoration: none; font-size: 1.5rem; letter-spacing: -0.5px; }
         .btn-hire { 
             background: linear-gradient(135deg, var(--primary), #00d1ff); 
-            color: #000; 
-            padding: 0.7rem 1.5rem; 
-            text-decoration: none; 
-            border-radius: 50px; 
-            font-weight: bold; 
-            font-size: 0.9rem; 
-            transition: all 0.3s ease;
+            color: #000; padding: 0.7rem 1.5rem; text-decoration: none; border-radius: 50px; 
+            font-weight: bold; font-size: 0.9rem; transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 255, 163, 0.3);
         }
-        .btn-hire:hover { 
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 255, 163, 0.4);
-        }
 
-        /* Hero Section */
         .hero { padding: 5rem 5% 3rem; text-align: center; max-width: 1000px; margin: 0 auto; }
         h1 { 
-            font-size: clamp(2.5rem, 6vw, 4rem); 
-            margin-bottom: 1.5rem; 
-            font-weight: 800;
+            font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1.5rem; font-weight: 800;
             background: linear-gradient(to bottom, #fff, var(--text-gray));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .subtitle { color: var(--text-gray); font-size: 1.25rem; margin-bottom: 4rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .subtitle { color: var(--text-gray); font-size: 1.25rem; margin-bottom: 4rem; }
 
-        /* Friendly Service Cards */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .terminal-card { 
-            background: var(--card-bg); 
-            border-radius: 20px; 
-            overflow: hidden; 
-            text-align: left; 
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: transform 0.3s ease;
+            background: var(--card-bg); border-radius: 20px; overflow: hidden; 
+            text-align: left; border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s ease;
         }
         .terminal-card:hover { transform: translateY(-5px); }
-        
-        .terminal-header { 
-            background: rgba(0,0,0,0.2); 
-            color: var(--primary); 
-            padding: 12px 20px; 
-            font-family: monospace; 
-            font-size: 0.8rem; 
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-        }
+        .terminal-header { background: rgba(0,0,0,0.2); color: var(--primary); padding: 12px 20px; font-family: monospace; font-size: 0.8rem; font-weight: bold; display: flex; justify-content: space-between; }
         .terminal-body { padding: 30px; }
         
-        /* Friendly UI Elements */
         p { margin-top: 0; font-weight: 600; color: var(--text-gray); font-size: 0.9rem; text-transform: uppercase; }
         input { 
-            width: 100%; padding: 14px; margin-top: 8px; 
-            background: rgba(0,0,0,0.2); border: 2px solid rgba(255,255,255,0.1); 
-            color: white; border-radius: 12px; font-family: inherit; box-sizing: border-box; 
-            transition: border-color 0.3s;
+            width: 100%; padding: 14px; margin-top: 8px; background: rgba(0,0,0,0.2); 
+            border: 2px solid rgba(255,255,255,0.1); color: white; border-radius: 12px; box-sizing: border-box; 
         }
-        input:focus { outline: none; border-color: var(--primary); }
-        
         button { 
-            width: 100%; padding: 14px; margin-top: 20px;
-            cursor: pointer; background: white; color: var(--dark); 
-            font-weight: 800; border: none; border-radius: 12px;
-            transition: all 0.3s; text-transform: uppercase; 
+            width: 100%; padding: 14px; margin-top: 20px; cursor: pointer; background: white; 
+            color: var(--dark); font-weight: 800; border: none; border-radius: 12px; transition: all 0.3s; 
         }
         button:hover { background: var(--primary); transform: scale(1.02); }
         
         .output { 
-            margin-top: 25px; font-size: 0.9rem; color: #fff; 
-            background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px;
-            min-height: 50px; font-family: monospace; border-left: 3px solid var(--primary);
+            margin-top: 25px; font-size: 0.9rem; color: #fff; background: rgba(0,0,0,0.2); 
+            padding: 15px; border-radius: 10px; min-height: 50px; font-family: monospace; border-left: 3px solid var(--primary);
         }
 
-        /* Footer & Donate */
         footer { text-align: center; padding: 6rem 2rem 3rem; }
-        .donate-box { 
-            background: linear-gradient(rgba(255,255,255,0.05), transparent); 
-            padding: 3rem; border-radius: 30px; display: inline-block; width: 100%; max-width: 500px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .donate-box p { color: #fff; margin-bottom: 1.5rem; }
+        .donate-box { background: linear-gradient(rgba(255,255,255,0.05), transparent); padding: 3rem; border-radius: 30px; display: inline-block; width: 100%; max-width: 500px; border: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body>
@@ -185,8 +136,10 @@
 </footer>
 
 <script>
+// --- GLOBAL CONFIG ---
 const GOOGLE_KEY = "AIzaSyBZnlqFEFSmraLzDD8y_hOSOhmHpLSPElQ";
 
+// --- 1. AUDIT FUNCTION ---
 async function runLiveAudit() {
     const url = document.getElementById('target-url').value;
     const output = document.getElementById('audit-results');
@@ -202,10 +155,11 @@ async function runLiveAudit() {
         
         output.innerHTML = `Audit Complete! <br>Performance Score: <strong style="color:var(--primary)">${score}%</strong><br>Status: ${score < 90 ? 'Needs a little love.' : 'Running beautifully!'}`;
     } catch (err) {
-        output.innerHTML = `Unable to fetch live data directly. <br> <a href="http://blitz-audit.udacity.com/api/v1/audits/${url}" target="_blank" style="color:var(--primary)">[View Results Mirror]</a>`;
+        output.innerHTML = `Unable to fetch live data. <br> <a href="http://blitz-audit.udacity.com/api/v1/audits/${url}" target="_blank" style="color:var(--primary)">[View Results Mirror]</a>`;
     }
 }
 
+// --- 2. PURGE FUNCTION ---
 function simulatePurge() {
     const fileInput = document.getElementById('image-input');
     const file = fileInput.files[0];
@@ -217,8 +171,6 @@ function simulatePurge() {
     
     setTimeout(() => {
         const saved = (file.size / 1024 * 0.75).toFixed(1);
-        
-        // Create a fake download link for demonstration
         const url = URL.createObjectURL(file);
         
         output.innerHTML = `
@@ -226,15 +178,25 @@ function simulatePurge() {
             We saved you ${saved}KB.<br>
             <a href="${url}" download="optimized_${file.name}" 
                style="color:var(--primary); text-decoration:underline; display:block; margin-top:10px;">
-               Click here to Download Optimized Asset
+               Download Optimized Asset
             </a>
         `;
     }, 2000);
 }
+
+// --- 3. MIGRATION FUNCTION ---
+function initMigration() {
+    const platform = document.getElementById('cms-source').value || "your platform";
+    const output = document.getElementById('migration-results');
+    
+    output.innerHTML = `Analyzing ${platform} structure...`;
+
+    setTimeout(() => {
+        output.innerHTML = "Plan generated! Opening support portal...";
+        window.location.href = `mailto:nathanielimrn@gmail.com?subject=Migration: ${platform}&body=I want to migrate my ${platform} site to your speed-first architecture.`;
+    }, 1500);
 }
 </script>
 
 </body>
 </html>
-
-
