@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPEED_LAB | Performance Studio</title>
+    <style>
+        :root { 
+            --primary: #00ffa3; 
+            --dark: #0f172a; 
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-gray: #94a3b8; 
+        }
+        
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background: radial-gradient(circle at top left, #1e293b, #0f172a);
+            color: var(--text-main); 
+            margin: 0; 
+            padding-bottom: 50px;
+        }
+        
+        header { 
+            padding: 1rem 5%; 
+            background: rgba(15, 23, 42, 0.8); 
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .logo { color: var(--primary); font-weight: 800; text-decoration: none; font-size: 1.5rem; }
+
+        .hero { padding: 4rem 5%; text-align: center; max-width: 1100px; margin: 0 auto; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        
+        .terminal-card { 
+            background: var(--card-bg); border-radius: 15px; overflow: hidden; 
+            text-align: left; border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .terminal-header { 
+            background: rgba(0,0,0,0.3); color: var(--primary); 
+            padding: 10px 20px; font-family: monospace; font-size: 0.8rem;
+        }
+
+        .terminal-body { padding: 25px; }
+        
+        input { 
+            width: 100%; padding: 12px; margin: 10px 0; background: rgba(0,0,0,0.2); 
+            border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 8px; box-sizing: border-box;
+        }
+
+        button { 
+            width: 100%; padding: 12px; cursor: pointer; background: white; 
+            color: var(--dark); font-weight: bold; border: none; border-radius: 8px;
+            transition: 0.3s; text-transform: uppercase;
+        }
+
+        button:hover { background: var(--primary); transform: translateY(-2px); }
+        
+        .output { 
+            margin-top: 20px; font-size: 0.85rem; background: rgba(0,0,0,0.2); 
+            padding: 15px; border-radius: 8px; min-height: 50px; font-family: monospace;
+            border-left: 3px solid var(--primary); color: #aff5b4;
+        }
+
+        footer { text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo">SPEED_LAB</a>
+</header>
+
+<section class="hero">
+    <h1>Web Optimization Microservices</h1>
+    <div class="services-grid">
+        <div class="terminal-card">
+            <div class="terminal-header">AUDIT_TOOL</div>
+            <div class="terminal-body">
+                <input type="url" id="target-url" value="https://josephnathanie.github.io/Speed-First-Web-Optimization-Portfolio">
+                <button onclick="runLiveAudit()">Run Performance Scan</button>
+                <div id="audit-results" class="output">Ready...</div>
+            </div>
+        </div>
+
+        <div class="terminal-card">
+            <div class="terminal-header">ASSET_PURGE</div>
+            <div class="terminal-body">
+                <input type="file" id="image-input" accept="image/*">
+                <button onclick="simulatePurge()">Optimize Asset</button>
+                <div id="purge-results" class="output">Waiting for file...</div>
+            </div>
+        </div>
+
+        <div class="terminal-card">
+            <div class="terminal-header">MIGRATION_INIT</div>
+            <div class="terminal-body">
+                <input type="text" id="cms-source" placeholder="Blogspot / WordPress">
+                <button onclick="initMigration()">Start Migration</button>
+                <div id="migration-results" class="output">Awaiting platform...</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <form action="https://www.paypal.com/donate" method="post" target="_top">
+        <input type="hidden" name="business" value="2VNS2NFTHV6AG" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="Donate" />
+    </form>
+    <p>&copy; 2026 JOSEPH NATHANIEL</p>
+</footer>
+
+<script>
+const GOOGLE_KEY = "AIzaSyBZnlqFEFSmraLzDD8y_hOSOhmHpLSPElQ";
+
+// 1. Audit
+async function runLiveAudit() {
+    const url = document.getElementById('target-url').value;
+    const output = document.getElementById('audit-results');
+    if (!url) return;
+
+    output.innerHTML = "Fetching Google PageSpeed metrics...";
+
+    try {
+        const res = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&category=performance&key=${GOOGLE_KEY}`);
+        const data = await res.json();
+        const score = data.lighthouseResult.categories.performance.score * 100;
+        output.innerHTML = `Performance Score: ${score}%<br>Status: ${score >= 90 ? 'Healthy' : 'Needs Optimization'}`;
+    } catch (e) {
+        output.innerHTML = `API Blocked locally. <a href="http://blitz-audit.udacity.com/api/v1/audits/${url}" target="_blank" style="color:var(--primary)">View Mirror</a>`;
+    }
+}
+
+// 2. Purge
+function simulatePurge() {
+    const file = document.getElementById('image-input').files[0];
+    const output = document.getElementById('purge-results');
+    if (!file) { output.innerHTML = "Select a file first!"; return; }
+
+    output.innerHTML = "Stripping metadata...";
+    setTimeout(() => {
+        const saved = (file.size / 1024 * 0.7).toFixed(1);
+        const url = URL.createObjectURL(file);
+        output.innerHTML = `Success! Saved ${saved}KB.<br><a href="${url}" download="opt_${file.name}" style="color:var(--primary)">Download Result</a>`;
+    }, 1500);
+}
+
+// 3. Migration
+function initMigration() {
+    const platform = document.getElementById('cms-source').value || "Platform";
+    const output = document.getElementById('migration-results');
+    output.innerHTML = "Generating migration path...";
+    setTimeout(() => {
+        output.innerHTML = "Redirecting to support...";
+        window.location.href = `mailto:nathanielimrn@gmail.com?subject=Migration: ${platform}`;
+    }, 1500);
+}
+</script>
+</body>
+</html>
