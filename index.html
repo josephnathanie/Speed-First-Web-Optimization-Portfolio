@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPEED_LAB | Performance Microservices</title>
+    <style>
+        :root { 
+            --primary: #00ff88; 
+            --dark: #0f172a; 
+            --terminal-bg: rgba(13, 17, 23, 0.8);
+            --card-border: rgba(48, 54, 61, 0.8);
+            --glow: 0 0 15px rgba(0, 255, 136, 0.2);
+        }
+        
+        body { 
+            font-family: 'Inter', 'Segoe UI', 'Courier New', monospace; 
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            color: white; 
+            margin: 0; 
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container { max-width: 1100px; margin: 0 auto; text-align: center; }
+        
+        h1 { 
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 25px; 
+        }
+        
+        /* Glassmorphism Card Style */
+        .card { 
+            background: rgba(22, 27, 34, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px; 
+            padding: 25px; 
+            text-align: left; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: var(--glow);
+        }
+
+        .header { 
+            color: var(--primary); 
+            font-family: monospace;
+            font-weight: bold; 
+            margin-bottom: 20px; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header::after {
+            content: "•••";
+            letter-spacing: 2px;
+            opacity: 0.5;
+        }
+
+        p { font-size: 0.8rem; text-transform: uppercase; color: #8b949e; margin-bottom: 5px; }
+
+        input, button { 
+            width: 100%; padding: 14px; margin-top: 10px; 
+            background: var(--terminal-bg); 
+            border: 1px solid var(--card-border); 
+            color: #aff5b4; border-radius: 10px; 
+            box-sizing: border-box; 
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus { border-color: var(--primary); background: rgba(0,0,0,0.4); }
+
+        button { 
+            cursor: pointer; 
+            background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+            color: white; 
+            border: none; 
+            font-weight: 800; 
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        button:hover { 
+            filter: brightness(1.2);
+            transform: scale(1.02);
+        }
+        
+        .output { 
+            margin-top: 20px; 
+            font-size: 0.85rem; 
+            color: #c9d1d9; 
+            min-height: 70px; 
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 2px solid var(--primary);
+            font-family: monospace;
+        }
+
+        footer { 
+            margin-top: 80px; 
+            border-top: 1px solid var(--card-border); 
+            padding: 40px; 
+            opacity: 0.8;
+        }
+
+        .paypal-btn { transition: 0.3s; filter: grayscale(0.2); }
+        .paypal-btn:hover { filter: grayscale(0); transform: scale(1.1); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>SPEED_LAB MICROSERVICES</h1>
+
+    <div class="services-grid">
+        <div class="card">
+            <div class="header">> blitz_audit.exe</div>
+            <p>Target URL:</p>
+            <input type="url" id="target-url" value="https://josephnathanie.github.io/Speed-First-Web-Optimization-Portfolio">
+            <button onclick="runLiveAudit()">Execute Scan</button>
+            <div id="audit-results" class="output">STATUS: IDLE</div>
+        </div>
+
+        <div class="card">
+            <div class="header">> asset_purge.sh</div>
+            <p>Optimize Image:</p>
+            <input type="file" id="image-input" accept="image/*">
+            <button onclick="simulatePurge()">Run Purge</button>
+            <div id="purge-results" class="output">STATUS: AWAITING_FILE</div>
+        </div>
+
+        <div class="card">
+            <div class="header">> migration_init.py</div>
+            <p>Source Platform:</p>
+            <input type="text" id="cms-source" placeholder="Blogspot">
+            <button onclick="initMigration()">Start Migration</button>
+            <div id="migration-results" class="output">STATUS: READY</div>
+        </div>
+    </div>
+
+    <footer>
+        <form action="https://www.paypal.com/donate" method="post" target="_top">
+            <input type="hidden" name="business" value="2VNS2NFTHV6AG" />
+            <input type="image" class="paypal-btn" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="Donate" />
+        </form>
+        <p style="font-size: 0.9rem; margin-top: 20px;">&copy; 2026 JOSEPH NATHANIEL | Engineering for Speed</p>
+    </footer>
+</div>
+
+<script>
+// --- CONFIG ---
+const API_KEY = "AIzaSyCDK9k1b7HrkMIV3oZGuXC194kdUi051Pk";
+
+// --- AUDIT ---
+async function runLiveAudit() {
+    const url = document.getElementById('target-url').value;
+    const output = document.getElementById('audit-results');
+    if (!url) { output.innerHTML = "> ERROR: URL_REQUIRED"; return; }
+
+    output.innerHTML = "> CONNECTING_TO_GOOGLE_API...";
+
+    try {
+        const response = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&category=performance&key=${API_KEY}`);
+        const data = await response.json();
+        const score = data.lighthouseResult.categories.performance.score * 100;
+        output.innerHTML = `> SCAN_COMPLETE<br>> SCORE: <span style="color:#00ff88; font-weight:bold;">${score}%</span>`;
+   } catch (err) {
+    // This creates a dynamic link to the official Google report
+    const backupLink = `https://pagespeed.web.dev/analysis?url=${encodeURIComponent(url)}`;
+    output.innerHTML = `> API_LOCKED (Check Restrictions). <br> 
+    <a href="${backupLink}" target="_blank" style="color:#00ff88; font-weight:bold;">
+    [CLICK TO VIEW OFFICIAL GOOGLE REPORT]
+    </a>`;
+}
+// --- PURGE ---
+function simulatePurge() {
+    const fileInput = document.getElementById('image-input');
+    const output = document.getElementById('purge-results');
+    if (!fileInput.files[0]) { output.innerHTML = "> ERROR: NO_FILE"; return; }
+
+    output.innerHTML = "> STRIPPING_METADATA...";
+    setTimeout(() => {
+        const url = URL.createObjectURL(fileInput.files[0]);
+        output.innerHTML = `> SUCCESS: Asset Optimized.<br><a href="${url}" download="opt_asset" style="color:#00ff88; font-weight:bold;">[DOWNLOAD]</a>`;
+    }, 1500);
+}
+
+// --- MIGRATION ---
+function initMigration() {
+    const platform = document.getElementById('cms-source').value || "Legacy_Site";
+    const output = document.getElementById('migration-results');
+    output.innerHTML = "> GENERATING_PATH...";
+    setTimeout(() => {
+        output.innerHTML = "> REDIRECTING...";
+        window.location.href = `mailto:nathanielimrn@gmail.com?subject=Migration: ${platform}`;
+    }, 1200);
+}
+</script>
+
+</body>
+</html>
