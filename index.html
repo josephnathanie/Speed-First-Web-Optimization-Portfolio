@@ -3,81 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPEED_LAB | Performance Microservices</title>
+    <title>SPEED_LAB | Modern Performance Studio</title>
     <style>
-        :root { --primary: #00ff88; --dark: #0f172a; --terminal-bg: #0d1117; --text-gray: #94a3b8; }
-        body { font-family: -apple-system, system-ui, sans-serif; background: var(--dark); color: white; margin: 0; line-height: 1.6; }
+        :root { 
+            --primary: #00ffa3; 
+            --accent: #7000ff;
+            --dark: #0f172a; 
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-gray: #94a3b8; 
+        }
         
-        /* Navigation */
-        header { padding: 1rem 5%; background: rgba(15, 23, 42, 0.9); border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
-        .logo { color: var(--primary); font-weight: bold; text-decoration: none; font-size: 1.4rem; letter-spacing: -1px; }
-        .btn-hire { background: var(--primary); color: var(--dark); padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 0.9rem; transition: 0.3s; }
-        .btn-hire:hover { filter: brightness(1.1); transform: scale(1.05); }
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background: radial-gradient(circle at top left, #1e293b, #0f172a);
+            color: var(--text-main); 
+            margin: 0; 
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        /* Friendly Navigation */
+        header { 
+            padding: 1.5rem 5%; 
+            background: rgba(15, 23, 42, 0.8); 
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
+        .logo { 
+            color: var(--primary); 
+            font-weight: 800; 
+            text-decoration: none; 
+            font-size: 1.5rem; 
+            letter-spacing: -0.5px;
+        }
+        .btn-hire { 
+            background: linear-gradient(135deg, var(--primary), #00d1ff); 
+            color: #000; 
+            padding: 0.7rem 1.5rem; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            font-size: 0.9rem; 
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 163, 0.3);
+        }
+        .btn-hire:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 163, 0.4);
+        }
 
         /* Hero Section */
-        .hero { padding: 4rem 5%; text-align: center; max-width: 1200px; margin: 0 auto; }
-        h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; letter-spacing: -1px; }
-        .subtitle { color: var(--text-gray); font-size: 1.2rem; margin-bottom: 3rem; }
+        .hero { padding: 5rem 5% 3rem; text-align: center; max-width: 1000px; margin: 0 auto; }
+        h1 { 
+            font-size: clamp(2.5rem, 6vw, 4rem); 
+            margin-bottom: 1.5rem; 
+            font-weight: 800;
+            background: linear-gradient(to bottom, #fff, var(--text-gray));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle { color: var(--text-gray); font-size: 1.25rem; margin-bottom: 4rem; max-width: 700px; margin-left: auto; margin-right: auto; }
 
-        /* Microservices Terminal Grid */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 2rem; }
-        .terminal-card { border: 1px solid #30363d; background: #161b22; border-radius: 10px; overflow: hidden; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .terminal-header { background: #30363d; color: #c9d1d9; padding: 10px 15px; font-family: monospace; font-size: 0.75rem; display: flex; align-items: center; }
-        .terminal-header::before { content: "● ● ●"; color: #ff5f56; margin-right: 10px; letter-spacing: 2px; }
-        .terminal-body { padding: 25px; font-family: 'Courier New', monospace; }
+        /* Friendly Service Cards */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .terminal-card { 
+            background: var(--card-bg); 
+            border-radius: 20px; 
+            overflow: hidden; 
+            text-align: left; 
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease;
+        }
+        .terminal-card:hover { transform: translateY(-5px); }
         
-        /* UI Elements */
-        input, button { width: 100%; padding: 12px; margin-top: 12px; background: var(--terminal-bg); border: 1px solid #30363d; color: #aff5b4; border-radius: 6px; font-family: inherit; box-sizing: border-box; }
-        button { cursor: pointer; background: #238636; color: white; font-weight: bold; border: none; transition: 0.2s; text-transform: uppercase; letter-spacing: 1px; }
-        button:hover { background: #2ea043; }
+        .terminal-header { 
+            background: rgba(0,0,0,0.2); 
+            color: var(--primary); 
+            padding: 12px 20px; 
+            font-family: monospace; 
+            font-size: 0.8rem; 
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+        .terminal-body { padding: 30px; }
         
-        .output { margin-top: 15px; font-size: 0.85rem; color: #8b949e; border-top: 1px dashed #30363d; padding-top: 12px; min-height: 70px; }
-        .highlight { color: var(--primary); }
+        /* Friendly UI Elements */
+        p { margin-top: 0; font-weight: 600; color: var(--text-gray); font-size: 0.9rem; text-transform: uppercase; }
+        input { 
+            width: 100%; padding: 14px; margin-top: 8px; 
+            background: rgba(0,0,0,0.2); border: 2px solid rgba(255,255,255,0.1); 
+            color: white; border-radius: 12px; font-family: inherit; box-sizing: border-box; 
+            transition: border-color 0.3s;
+        }
+        input:focus { outline: none; border-color: var(--primary); }
+        
+        button { 
+            width: 100%; padding: 14px; margin-top: 20px;
+            cursor: pointer; background: white; color: var(--dark); 
+            font-weight: 800; border: none; border-radius: 12px;
+            transition: all 0.3s; text-transform: uppercase; 
+        }
+        button:hover { background: var(--primary); transform: scale(1.02); }
+        
+        .output { 
+            margin-top: 25px; font-size: 0.9rem; color: #fff; 
+            background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px;
+            min-height: 50px; font-family: monospace; border-left: 3px solid var(--primary);
+        }
 
         /* Footer & Donate */
-        footer { text-align: center; padding: 4rem 2rem; border-top: 1px solid #1e293b; margin-top: 4rem; }
-        .donate-box { background: #1e293b; padding: 2rem; border-radius: 12px; display: inline-block; margin-bottom: 2rem; }
+        footer { text-align: center; padding: 6rem 2rem 3rem; }
+        .donate-box { 
+            background: linear-gradient(rgba(255,255,255,0.05), transparent); 
+            padding: 3rem; border-radius: 30px; display: inline-block; width: 100%; max-width: 500px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .donate-box p { color: #fff; margin-bottom: 1.5rem; }
     </style>
 </head>
 <body>
 
 <header>
     <a href="#" class="logo">SPEED_LAB</a>
-    <a href="mailto:nathanielimrn@gmail.com" class="btn-hire">HIRE THE LAB</a>
+    <a href="mailto:nathanielimrn@gmail.com" class="btn-hire">Let's Talk</a>
 </header>
 
 <section class="hero">
-    <h1>Lightning Fast Web Optimization</h1>
-    <p class="subtitle">Deploying high-performance architectures and optimization microservices.</p>
+    <h1>Web Optimization, <br>Simplified.</h1>
+    <p class="subtitle">Experience lightning-fast performance through our suite of specialized microservices.</p>
     
     <div class="services-grid">
         <div class="terminal-card">
-            <div class="terminal-header">blitz_audit.exe</div>
+            <div class="terminal-header"><span>BLITZ_AUDIT.EXE</span> <span>● ● ●</span></div>
             <div class="terminal-body">
-                <p>> Target URL:</p>
+                <p>Website to Analyze</p>
                 <input type="url" id="target-url" value="https://josephnathanie.github.io/Speed-First-Web-Optimization-Portfolio">
-                <button onclick="runLiveAudit()">Execute Scan</button>
-                <div id="audit-results" class="output">STATUS: IDLE</div>
+                <button onclick="runLiveAudit()">Run Performance Scan</button>
+                <div id="audit-results" class="output">Ready for your URL...</div>
             </div>
         </div>
 
         <div class="terminal-card">
-            <div class="terminal-header">asset_purge.sh</div>
+            <div class="terminal-header"><span>ASSET_PURGE.SH</span> <span>● ● ●</span></div>
             <div class="terminal-body">
-                <p>> Select Asset:</p>
+                <p>Select Image Asset</p>
                 <input type="file" id="image-input" accept="image/*">
-                <button onclick="simulatePurge()">Optimize Asset</button>
-                <div id="purge-results" class="output">STATUS: AWAITING_FILE</div>
+                <button onclick="simulatePurge()">Optimize Now</button>
+                <div id="purge-results" class="output">Waiting for asset...</div>
             </div>
         </div>
 
         <div class="terminal-card">
-            <div class="terminal-header">migration_init.py</div>
+            <div class="terminal-header"><span>MIGRATION_INIT.PY</span> <span>● ● ●</span></div>
             <div class="terminal-body">
-                <p>> Platform Source:</p>
-                <input type="text" id="cms-source" placeholder="WordPress / Blogspot">
+                <p>Current Platform</p>
+                <input type="text" id="cms-source" placeholder="WordPress, Blogspot, etc.">
                 <button onclick="initMigration()">Start Migration</button>
-                <div id="migration-results" class="output">STATUS: READY</div>
+                <div id="migration-results" class="output">Awaiting platform details...</div>
             </div>
         </div>
     </div>
@@ -85,27 +175,24 @@
 
 <footer>
     <div class="donate-box">
-        <p style="margin-top: 0;">Support Optimization Research:</p>
+        <p>Support our performance research</p>
         <form action="https://www.paypal.com/donate" method="post" target="_top">
             <input type="hidden" name="business" value="2VNS2NFTHV6AG" />
-            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal" alt="Donate with PayPal button" />
         </form>
     </div>
-    <p>&copy; 2026 JOSEPH NATHANIEL | SPEED_LAB</p>
+    <p style="margin-top: 3rem; color: var(--text-gray); font-size: 0.8rem;">&copy; 2026 JOSEPH NATHANIEL | Handcrafted for Speed</p>
 </footer>
 
 <script>
-// --- CORE CONFIGURATION ---
 const GOOGLE_KEY = "AIzaSyBZnlqFEFSmraLzDD8y_hOSOhmHpLSPElQ";
 
-// --- MICROSERVICE 1: REAL-TIME AUDIT ---
 async function runLiveAudit() {
     const url = document.getElementById('target-url').value;
     const output = document.getElementById('audit-results');
-    
-    if (!url) { output.innerHTML = "> ERROR: URL_REQUIRED"; return; }
+    if (!url) { output.innerHTML = "Please enter a URL first!"; return; }
 
-    output.innerHTML = "> CONNECTING_TO_GOOGLE_V5_API...<br>> ANALYZING_LIGHTHOUSE_METRICS...";
+    output.innerHTML = "Connecting to Google Insight Labs...";
 
     try {
         const res = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&category=performance&key=${GOOGLE_KEY}`);
@@ -113,37 +200,33 @@ async function runLiveAudit() {
         const data = await res.json();
         const score = data.lighthouseResult.categories.performance.score * 100;
         
-        output.innerHTML = `> SCAN_COMPLETE<br>> PERFORMANCE: <span class="highlight">${score}%</span><br>> RECOMMENDATION: ${score < 90 ? 'CRITICAL_FIX_REQUIRED' : 'OPTIMIZED_HEALTHY'}`;
+        output.innerHTML = `Audit Complete! <br>Performance Score: <strong style="color:var(--primary)">${score}%</strong><br>Status: ${score < 90 ? 'Needs a little love.' : 'Running beautifully!'}`;
     } catch (err) {
-        output.innerHTML = `> API_RESTRICTED_BY_CORS<br>> <a href="http://blitz-audit.udacity.com/api/v1/audits/${url}" target="_blank" style="color:var(--primary)">[VIEW UDACITY MIRROR RESULTS]</a>`;
+        output.innerHTML = `Unable to fetch live data directly. <br> <a href="http://blitz-audit.udacity.com/api/v1/audits/${url}" target="_blank" style="color:var(--primary)">[View Results Mirror]</a>`;
     }
 }
 
-// --- MICROSERVICE 2: ASSET PURGE ---
 function simulatePurge() {
     const file = document.getElementById('image-input').files[0];
     const output = document.getElementById('purge-results');
-    
-    if (!file) { output.innerHTML = "> ERROR: FILE_NOT_FOUND"; return; }
+    if (!file) { output.innerHTML = "Pick a file to see the magic!"; return; }
 
-    output.innerHTML = `> MOUNTING_WORKER...<br>> STRIPPING_EXIF: ${file.name}<br>> RE-ENCODING_WEBP...`;
+    output.innerHTML = `Processing ${file.name}...`;
     
     setTimeout(() => {
         const saved = (file.size / 1024 * 0.75).toFixed(1);
-        output.innerHTML = `> SUCCESS: ASSET_OPTIMIZED<br>> BYTES_PURGED: ${saved}KB saved.<br>> RESULT: 100% WEB_READY.`;
+        output.innerHTML = `Success! Asset optimized. <br>We saved you ${saved}KB. <br>Result: 100% Web Ready.`;
     }, 2000);
 }
 
-// --- MICROSERVICE 3: MIGRATION INIT ---
 function initMigration() {
-    const platform = document.getElementById('cms-source').value || "Legacy_CMS";
+    const platform = document.getElementById('cms-source').value || "your site";
     const output = document.getElementById('migration-results');
-    
-    output.innerHTML = `> SCANNING_${platform.toUpperCase()}_DB...<br>> GENERATING_GIT_HANDSHAKE...`;
+    output.innerHTML = `Analyzing ${platform} structure...`;
 
     setTimeout(() => {
-        output.innerHTML = "> HANDSHAKE_SUCCESS<br>> REDIRECTING_TO_SUPPORT_PORTAL...";
-        window.location.href = `mailto:nathanielimrn@gmail.com?subject=Migration: ${platform}&body=I want to migrate my ${platform} site to your speed-first architecture.`;
+        output.innerHTML = "Migration plan generated! Opening support portal...";
+        window.location.href = `mailto:nathanielimrn@gmail.com?subject=Migration: ${platform}&body=I want to migrate my ${platform} site to a high-speed architecture.`;
     }, 1800);
 }
 </script>
