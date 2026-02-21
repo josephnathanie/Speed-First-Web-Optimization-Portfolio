@@ -187,7 +187,7 @@
         
         try {
             // This calls the actual Google PageSpeed Insights API
-            const res = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&category=performance`);
+            const res = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&category=performance&key=AIzaSyBjvphavV0mPyN6evkqF_JNDOymNdiWrvw`);
             
             if (!res.ok) throw new Error('API_LIMIT_OR_CORS');
 
@@ -235,3 +235,4 @@
 
 </body>
 </html>
+
