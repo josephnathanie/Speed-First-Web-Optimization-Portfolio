@@ -87,7 +87,7 @@
 
 <script>
 // --- GLOBAL CONFIG ---
-const GOOGLE_API_KEY = "AIzaSyBZnlqFEFSmraLzDD8y_hOSOhmHpLSPElQ";
+const GOOGLE_API_KEY = "fa94ff4ca86316f27f25167cdcba398b092c25f8";
 
 // --- 1. THE BLITZ AUDIT (Live API) ---
 async function runLiveAudit() {
@@ -104,7 +104,7 @@ async function runLiveAudit() {
 
     try {
         // Fetching data using your provided API Key
-        const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&category=performance&key=${GOOGLE_API_KEY}`;
+        const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&category=performance&key=${fa94ff4ca86316f27f25167cdcba398b092c25f8}`;
         const res = await fetch(apiEndpoint);
         
         if (!res.ok) throw new Error("API_LIMIT_OR_CORS");
@@ -143,3 +143,4 @@ function initMigration() {
 
 </body>
 </html>
+
